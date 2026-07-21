@@ -177,6 +177,7 @@ canvas{{max-height:280px;}}
   <div>
     <h1>🎰 台灣大樂透 <span>智慧分析</span></h1>
     <div class="update-time" id="updateTime">載入中...</div>
+    <div style="font-size:0.65rem;color:rgba(255,255,255,0.4);margin-top:2px;">🏛️ 筱鯉兒 × 雅典</div>
   </div>
 </div>
 
