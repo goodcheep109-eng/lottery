@@ -1,0 +1,30 @@
+update.yml
+name: 自動更新大樂透資料
+
+on:
+  schedule:
+    - cron: '0 0 * * 1,4,6'
+  workflow_dispatch:
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python main.py --no-open
+      - name: 提交更新
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          git add data/lotto649.csv docs/index.html
+          git diff --staged --quiet || git commit -m "自動更新 $(date '+%Y/%m/%d')"
+          git push
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages
