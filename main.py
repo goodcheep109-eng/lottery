@@ -484,6 +484,10 @@ function renderConsecChart() {{
 init();
 </script>
 <script>
+  <div style="text-align:center;padding:20px 0 10px;color:var(--muted);font-size:0.72rem;">
+  🏛️ Designed by <span style="color:var(--accent);font-weight:700;">筱鯉兒 × 雅典</span> ｜ 2026<br>
+  <span style="font-size:0.65rem;opacity:0.6;">資料來源：台灣彩券官網 ｜ 僅供娛樂參考</span>
+</div>
   function sendHeight() {{
     window.parent.postMessage({{ iframeHeight: document.documentElement.scrollHeight }}, '*');
   }}
